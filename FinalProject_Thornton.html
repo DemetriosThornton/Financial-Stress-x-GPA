@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>finalproject_thornton</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="FinalProject_Thornton_files/libs/clipboard/clipboard.min.js"></script>
+<script src="FinalProject_Thornton_files/libs/quarto-html/quarto.js"></script>
+<script src="FinalProject_Thornton_files/libs/quarto-html/popper.min.js"></script>
+<script src="FinalProject_Thornton_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="FinalProject_Thornton_files/libs/quarto-html/anchor.min.js"></script>
+<link href="FinalProject_Thornton_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="FinalProject_Thornton_files/libs/quarto-html/quarto-syntax-highlighting-de84f8d6bb715db06a919283c2d1e787.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="FinalProject_Thornton_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="FinalProject_Thornton_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="FinalProject_Thornton_files/libs/bootstrap/bootstrap-cf43a150f4ed865b4eb4d60b88c21c49.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question"><span class="header-section-number">2</span> Research Question</a></li>
+  <li><a href="#hypothesis" id="toc-hypothesis" class="nav-link" data-scroll-target="#hypothesis"><span class="header-section-number">3</span> Hypothesis</a></li>
+  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">4</span> Descriptive Statistics</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization"><span class="header-section-number">5</span> Visualization</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing"><span class="header-section-number">6</span> Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#model-1" id="toc-model-1" class="nav-link" data-scroll-target="#model-1"><span class="header-section-number">6.1</span> Model 1</a></li>
+  <li><a href="#model-1b-ordinal" id="toc-model-1b-ordinal" class="nav-link" data-scroll-target="#model-1b-ordinal"><span class="header-section-number">6.2</span> Model 1b (Ordinal)</a></li>
+  <li><a href="#model-2-controls" id="toc-model-2-controls" class="nav-link" data-scroll-target="#model-2-controls"><span class="header-section-number">6.3</span> Model 2 (Controls)</a></li>
+  <li><a href="#model-3-interaction-and-controls" id="toc-model-3-interaction-and-controls" class="nav-link" data-scroll-target="#model-3-interaction-and-controls"><span class="header-section-number">6.4</span> Model 3 (Interaction and Controls)</a></li>
+  </ul></li>
+  <li><a href="#model-comparisons" id="toc-model-comparisons" class="nav-link" data-scroll-target="#model-comparisons"><span class="header-section-number">7</span> Model Comparisons</a></li>
+  <li><a href="#diagnostics" id="toc-diagnostics" class="nav-link" data-scroll-target="#diagnostics"><span class="header-section-number">8</span> Diagnostics</a>
+  <ul class="collapse">
+  <li><a href="#residuals-vs.-fitted" id="toc-residuals-vs.-fitted" class="nav-link" data-scroll-target="#residuals-vs.-fitted"><span class="header-section-number">8.1</span> 1. Residuals vs.&nbsp;Fitted</a></li>
+  <li><a href="#normal-qq-plot" id="toc-normal-qq-plot" class="nav-link" data-scroll-target="#normal-qq-plot"><span class="header-section-number">8.2</span> 2. Normal Q–Q Plot</a></li>
+  <li><a href="#scalelocation" id="toc-scalelocation" class="nav-link" data-scroll-target="#scalelocation"><span class="header-section-number">8.3</span> 3. Scale–Location</a></li>
+  <li><a href="#cooks-distance-residuals-vs.-leverage" id="toc-cooks-distance-residuals-vs.-leverage" class="nav-link" data-scroll-target="#cooks-distance-residuals-vs.-leverage"><span class="header-section-number">8.4</span> 4. Cook’s Distance / Residuals vs.&nbsp;Leverage</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9</span> References</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.4.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>Financial stress is becoming an increasingly worrying factor in 2025, especially for college student’s. Some students may be supporting themselves through their education without assistance from family members or cosigners. For example, tuition costs at the Univeristy of Massachusetts Amherst have increased over $10,000 the past 10 years. Monthly housing costs and living expenses have increased significantly over the past 10 years as well. How significant are these external factors on a students academic performance? What can Universities do to help not only lower the cost of living for on/off campus students but keep tuition costs reasonable? Previous research suggests that students under great financial strain can exhibit lower academic achievement. In a world full of scalping, tariffs, price gouging, and unattainable requirements for housing students are bound to see a decrease in overall performance due to these rising prices and low wages.</p>
+</section>
+<section id="research-question" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Research Question</h1>
+<p>How is financial stress related to students’ academic performance (CGPA)??</p>
+</section>
+<section id="hypothesis" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Hypothesis</h1>
+<p>Null Hypothesis (H0): Financial stress has no significant effect on students CGPA.</p>
+<p>Hypothesis (H1): Higher financial stress is associated with lower CGPA among college students.</p>
+</section>
+<section id="descriptive-statistics" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Descriptive Statistics</h1>
+<p>The data set was downloaded from Kaggle.com and be found at the following link: <a href="https://www.kaggle.com/datasets/hopesb/student-depression-dataset">Student Depression Dataset</a>.</p>
+<p>The data features 18 columns and over 27,000 rows. Important variables for my study include $CGPA and $Financial Stress. The $CGPA column represents the cumulative grade point average for each of the 27,901 students. The range of these values is from 0 -10. The $Financial Stress column represents students self perceived financial stress level on a scale of 1-5.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"student_depression_dataset.csv"</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 5%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 1%">
+<col style="width: 7%">
+<col style="width: 6%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 2%">
+<col style="width: 14%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 12%">
+<col style="width: 4%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">id</th>
+<th style="text-align: left;">Gender</th>
+<th style="text-align: right;">Age</th>
+<th style="text-align: left;">City</th>
+<th style="text-align: left;">Profession</th>
+<th style="text-align: right;">Academic.Pressure</th>
+<th style="text-align: right;">Work.Pressure</th>
+<th style="text-align: right;">CGPA</th>
+<th style="text-align: right;">Study.Satisfaction</th>
+<th style="text-align: right;">Job.Satisfaction</th>
+<th style="text-align: left;">Sleep.Duration</th>
+<th style="text-align: left;">Dietary.Habits</th>
+<th style="text-align: left;">Degree</th>
+<th style="text-align: left;">Have.you.ever.had.suicidal.thoughts..</th>
+<th style="text-align: right;">Work.Study.Hours</th>
+<th style="text-align: left;">Financial.Stress</th>
+<th style="text-align: left;">Family.History.of.Mental.Illness</th>
+<th style="text-align: right;">Depression</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: left;">Visakhapatnam</td>
+<td style="text-align: left;">Student</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8.97</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">‘5-6 hours’</td>
+<td style="text-align: left;">Healthy</td>
+<td style="text-align: left;">B.Pharm</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">Bangalore</td>
+<td style="text-align: left;">Student</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.90</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">‘5-6 hours’</td>
+<td style="text-align: left;">Moderate</td>
+<td style="text-align: left;">BSc</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">2.0</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">Srinagar</td>
+<td style="text-align: left;">Student</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">7.03</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">‘Less than 5 hours’</td>
+<td style="text-align: left;">Healthy</td>
+<td style="text-align: left;">BA</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">30</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: left;">Varanasi</td>
+<td style="text-align: left;">Student</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.59</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">‘7-8 hours’</td>
+<td style="text-align: left;">Moderate</td>
+<td style="text-align: left;">BCA</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">5.0</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">32</td>
+<td style="text-align: left;">Female</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">Jaipur</td>
+<td style="text-align: left;">Student</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">8.13</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">‘5-6 hours’</td>
+<td style="text-align: left;">Moderate</td>
+<td style="text-align: left;">M.Tech</td>
+<td style="text-align: left;">Yes</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">33</td>
+<td style="text-align: left;">Male</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: left;">Pune</td>
+<td style="text-align: left;">Student</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5.70</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">‘Less than 5 hours’</td>
+<td style="text-align: left;">Healthy</td>
+<td style="text-align: left;">PhD</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">1.0</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 27,901
+Columns: 18
+$ id                                    &lt;int&gt; 2, 8, 26, 30, 32, 33, 52, 56, 59…
+$ Gender                                &lt;chr&gt; "Male", "Female", "Male", "Femal…
+$ Age                                   &lt;dbl&gt; 33, 24, 31, 28, 25, 29, 30, 30, …
+$ City                                  &lt;chr&gt; "Visakhapatnam", "Bangalore", "S…
+$ Profession                            &lt;chr&gt; "Student", "Student", "Student",…
+$ Academic.Pressure                     &lt;dbl&gt; 5, 2, 3, 3, 4, 2, 3, 2, 3, 2, 3,…
+$ Work.Pressure                         &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ CGPA                                  &lt;dbl&gt; 8.97, 5.90, 7.03, 5.59, 8.13, 5.…
+$ Study.Satisfaction                    &lt;dbl&gt; 2, 5, 5, 2, 3, 3, 4, 4, 1, 3, 3,…
+$ Job.Satisfaction                      &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+$ Sleep.Duration                        &lt;chr&gt; "'5-6 hours'", "'5-6 hours'", "'…
+$ Dietary.Habits                        &lt;chr&gt; "Healthy", "Moderate", "Healthy"…
+$ Degree                                &lt;chr&gt; "B.Pharm", "BSc", "BA", "BCA", "…
+$ Have.you.ever.had.suicidal.thoughts.. &lt;chr&gt; "Yes", "No", "No", "Yes", "Yes",…
+$ Work.Study.Hours                      &lt;dbl&gt; 3, 3, 9, 4, 1, 4, 1, 0, 12, 2, 1…
+$ Financial.Stress                      &lt;chr&gt; "1.0", "2.0", "1.0", "5.0", "1.0…
+$ Family.History.of.Mental.Illness      &lt;chr&gt; "No", "Yes", "Yes", "Yes", "No",…
+$ Depression                            &lt;int&gt; 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1,…</code></pre>
+</div>
+</div>
+</section>
+<section id="visualization" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Visualization</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> CGPA)) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.25</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of CGPA"</span>, <span class="at">x =</span> <span class="st">"CGPA"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_Thornton_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(<span class="st">`</span><span class="at">Financial.Stress</span><span class="st">`</span>), <span class="at">y =</span> CGPA)) <span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">fill =</span> <span class="st">"lightgreen"</span>) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"CGPA by Financial Stress Levels"</span>, <span class="at">x =</span> <span class="st">"Financial Stress"</span>, <span class="at">y =</span> <span class="st">"CGPA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_Thornton_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesis-testing" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Hypothesis Testing</h1>
+<section id="model-1" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="model-1"><span class="header-section-number">6.1</span> Model 1</h2>
+<p>The first model, which included only financial stress as a predictor of CGPA, revealed no statistically significant relationship. None of the financial stress categories were associated with changes in academic performance. Furthermore, the model explained almost none of the variance in CGPA, as indicated by the near-zero adjusted R-squared value.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(CGPA <span class="sc">~</span> <span class="st">`</span><span class="at">Financial.Stress</span><span class="st">`</span>, <span class="at">data =</span> df)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = CGPA ~ Financial.Stress, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.6920 -1.3620  0.1137  1.2692  2.3700 
+
+Coefficients:
+                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)           7.1367     0.8491   8.405   &lt;2e-16 ***
+Financial.Stress1.0   0.5197     0.8493   0.612    0.541    
+Financial.Stress2.0   0.4934     0.8494   0.581    0.561    
+Financial.Stress3.0   0.5041     0.8493   0.594    0.553    
+Financial.Stress4.0   0.5553     0.8493   0.654    0.513    
+Financial.Stress5.0   0.5202     0.8493   0.613    0.540    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.471 on 27895 degrees of freedom
+Multiple R-squared:  0.0002141, Adjusted R-squared:  3.487e-05 
+F-statistic: 1.195 on 5 and 27895 DF,  p-value: 0.3089</code></pre>
+</div>
+</div>
+</section>
+<section id="model-1b-ordinal" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="model-1b-ordinal"><span class="header-section-number">6.2</span> Model 1b (Ordinal)</h2>
+<p>A model was fitted for stress as an ordinal variable. The student responses were coded into 5 categories ranging from Not Stressed to Extremely Stressed. The model found essentially no statistically significant findings between the four intercept tests, except for a slightly marginally significant p value for the cubic intercept. Although there is a detectable S‐shaped wiggle in the means, the magnitude of these deviations is very small (all mean CGPA remain tightly clustered around 7.65–7.69). In practical terms, treating stress as an ordered factor with a cubic trend does not yield a substantively meaningful relationship with CGPA.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>stress_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Not stressed"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Slightly stressed"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Moderately stressed"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Strongly stressed"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Extremely stressed"</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Financial.Stress.Num <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(df<span class="sc">$</span>Financial.Stress <span class="sc">==</span> <span class="st">"?"</span>, <span class="cn">NA</span>, df<span class="sc">$</span>Financial.Stress))</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Financial.Stress.ord <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  df<span class="sc">$</span>Financial.Stress.Num,</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> stress_labels,</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Financial.Stress.ord <span class="ot">&lt;-</span> <span class="fu">droplevels</span>(df<span class="sc">$</span>Financial.Stress.ord)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Financial.Stress.ord, <span class="at">useNA =</span> <span class="st">"ifany"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+       Not stressed   Slightly stressed Moderately stressed   Strongly stressed 
+               5121                5061                5226                5775 
+ Extremely stressed                &lt;NA&gt; 
+               6715                   3 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">lm</span>(CGPA <span class="sc">~</span> Financial.Stress.ord, <span class="at">data =</span> df)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = CGPA ~ Financial.Stress.ord, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.6920 -1.3620  0.1137  1.2692  2.3700 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)             7.655202   0.008855 864.525   &lt;2e-16 ***
+Financial.Stress.ord.L  0.019938   0.019441   1.026   0.3051    
+Financial.Stress.ord.Q  0.006119   0.019703   0.311   0.7561    
+Financial.Stress.ord.C -0.039004   0.019880  -1.962   0.0498 *  
+Financial.Stress.ord^4 -0.015580   0.020168  -0.772   0.4398    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.471 on 27893 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.0002007, Adjusted R-squared:  5.73e-05 
+F-statistic:   1.4 on 4 and 27893 DF,  p-value: 0.2312</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_clean <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Financial.Stress.Num =</span> <span class="fu">as.numeric</span>(<span class="fu">ifelse</span>(Financial.Stress <span class="sc">==</span> <span class="st">"?"</span>, <span class="cn">NA</span>, Financial.Stress))) <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Financial.Stress.Num), <span class="sc">!</span><span class="fu">is.na</span>(CGPA))</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>mean_df <span class="ot">&lt;-</span> df_clean <span class="sc">%&gt;%</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Financial.Stress.Num) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_CGPA =</span> <span class="fu">mean</span>(CGPA), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mean_df, <span class="fu">aes</span>(<span class="at">x =</span> Financial.Stress.Num, <span class="at">y =</span> mean_CGPA)) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">3</span>),</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">se =</span> <span class="cn">FALSE</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Not</span><span class="sc">\n</span><span class="st">stressed"</span>,</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Slightly</span><span class="sc">\n</span><span class="st">stressed"</span>,</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Moderately</span><span class="sc">\n</span><span class="st">stressed"</span>,</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Strongly</span><span class="sc">\n</span><span class="st">stressed"</span>,</span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Extremely</span><span class="sc">\n</span><span class="st">stressed"</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Financial Stress Level"</span>,</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean CGPA"</span>,</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean CGPA by Financial Stress Level with Cubic Trend"</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_Thornton_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="model-2-controls" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="model-2-controls"><span class="header-section-number">6.3</span> Model 2 (Controls)</h2>
+<p>The second model incorporated additional control variables, including academic pressure, work pressure, study satisfaction, family history of mental illness, gender, and age. While the overall model was statistically significant (p &lt; 0.001), financial stress remained an insignificant predictor of CGPA. In contrast, academic pressure, work pressure, and study satisfaction were significant predictors: higher levels of academic and work pressure, as well as lower study satisfaction, were associated with lower CGPA. Gender (being male) was also a statistically significant but small positive predictor of CGPA.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(CGPA <span class="sc">~</span> <span class="st">`</span><span class="at">Financial.Stress</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">Academic.Pressure</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">Work.Pressure</span><span class="st">`</span> <span class="sc">+</span> <span class="st">`</span><span class="at">Study.Satisfaction</span><span class="st">`</span> <span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>               <span class="st">`</span><span class="at">Family.History.of.Mental.Illness</span><span class="st">`</span> <span class="sc">+</span> Gender <span class="sc">+</span> Age, <span class="at">data =</span> df)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = CGPA ~ Financial.Stress + Academic.Pressure + Work.Pressure + 
+    Study.Satisfaction + Family.History.of.Mental.Illness + Gender + 
+    Age, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.9513 -1.3587  0.1033  1.2644  2.5731 
+
+Coefficients:
+                                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                          7.224844   0.848050   8.519  &lt; 2e-16 ***
+Financial.Stress1.0                  0.595913   0.846661   0.704    0.482    
+Financial.Stress2.0                  0.565996   0.846665   0.669    0.504    
+Financial.Stress3.0                  0.580129   0.846659   0.685    0.493    
+Financial.Stress4.0                  0.635020   0.846644   0.750    0.453    
+Financial.Stress5.0                  0.602447   0.846623   0.712    0.477    
+Academic.Pressure                   -0.030475   0.006481  -4.702 2.58e-06 ***
+Work.Pressure                       -1.768926   0.199620  -8.861  &lt; 2e-16 ***
+Study.Satisfaction                  -0.051509   0.006502  -7.922 2.42e-15 ***
+Family.History.of.Mental.IllnessYes -0.009506   0.017580  -0.541    0.589    
+GenderMale                           0.103705   0.017679   5.866 4.51e-09 ***
+Age                                  0.001126   0.001801   0.625    0.532    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.466 on 27889 degrees of freedom
+Multiple R-squared:  0.00696,   Adjusted R-squared:  0.006569 
+F-statistic: 17.77 on 11 and 27889 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="model-3-interaction-and-controls" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="model-3-interaction-and-controls"><span class="header-section-number">6.4</span> Model 3 (Interaction and Controls)</h2>
+<p>When we account for gender and factors like academic and work pressure and study satisfaction, financial stress hardly registers any effect on students’ GPA none of the stress related trends are significant, and together they explain almost no variation. Instead, being male is linked to a modest 0.10 point higher GPA, while higher academic and work pressures and greater study satisfaction all correspond to small but clear drops in GPA. There’s also no sign that stress impacts men and women differently. In short, financial stress on its own isn’t moving the needle on GPA once you consider these other pressures, and most of what drives GPA differences lies elsewhere.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Gender)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Female   Male 
+ 12354  15547 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  CGPA <span class="sc">~</span> Financial.Stress.ord <span class="sc">*</span> Gender <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    Academic.Pressure <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    Work.Pressure <span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    Study.Satisfaction <span class="sc">+</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    Family.History.of.Mental.Illness <span class="sc">+</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    Age,</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = CGPA ~ Financial.Stress.ord * Gender + Academic.Pressure + 
+    Work.Pressure + Study.Satisfaction + Family.History.of.Mental.Illness + 
+    Age, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-7.9560 -1.3596  0.1039  1.2650  2.5760 
+
+Coefficients:
+                                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                          7.820910   0.058347 134.040  &lt; 2e-16 ***
+Financial.Stress.ord.L               0.031190   0.029266   1.066   0.2866    
+Financial.Stress.ord.Q              -0.016484   0.029513  -0.559   0.5765    
+Financial.Stress.ord.C              -0.043230   0.029855  -1.448   0.1476    
+Financial.Stress.ord^4               0.025096   0.030339   0.827   0.4081    
+GenderMale                           0.102703   0.017783   5.775 7.76e-09 ***
+Academic.Pressure                   -0.030533   0.006481  -4.711 2.48e-06 ***
+Work.Pressure                       -1.765247   0.199629  -8.843  &lt; 2e-16 ***
+Study.Satisfaction                  -0.051516   0.006502  -7.923 2.41e-15 ***
+Family.History.of.Mental.IllnessYes -0.009493   0.017581  -0.540   0.5892    
+Age                                  0.001150   0.001801   0.639   0.5230    
+Financial.Stress.ord.L:GenderMale   -0.009184   0.038994  -0.236   0.8138    
+Financial.Stress.ord.Q:GenderMale    0.046427   0.039539   1.174   0.2403    
+Financial.Stress.ord.C:GenderMale    0.002981   0.039913   0.075   0.9405    
+Financial.Stress.ord^4:GenderMale   -0.071287   0.040510  -1.760   0.0785 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.466 on 27883 degrees of freedom
+  (3 observations deleted due to missingness)
+Multiple R-squared:  0.007104,  Adjusted R-squared:  0.006605 
+F-statistic: 14.25 on 14 and 27883 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="model-comparisons" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Model Comparisons</h1>
+<p>Model 2 provided a better fit to the data than Model 1, 1b and 3 as indicated by a higher adjusted R-squared value and a much smaller AIC. However, despite the improved model fit, financial stress remained an insignificant predictor of CGPA. The inclusion of control variables highlighted that other factors such as academic pressure, work obligations, and study satisfaction have a stronger impact on students’ academic performance than financial stress alone.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criteria</th>
+<th>Model 1</th>
+<th>Model 1b (Ordinal)</th>
+<th>Model 2 (Controls)</th>
+<th>Model 3 (Interaction + Controls)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Predictors included</strong></td>
+<td>Financial Stress (categorical)</td>
+<td>Financial Stress (ordinal)</td>
+<td>Financial Stress, Academic Pressure, Work Pressure, Study Satisfaction, Family History, Gender, Age</td>
+<td>Financial Stress × Gender interaction, Academic Pressure, Work Pressure, Study Satisfaction, Family History, Age</td>
+</tr>
+<tr class="even">
+<td><strong>Adjusted R²</strong></td>
+<td>0.00003</td>
+<td>0.00006</td>
+<td><strong>0.0066</strong></td>
+<td>0.0066</td>
+</tr>
+<tr class="odd">
+<td><strong>AIC (approx.)</strong></td>
+<td>High</td>
+<td>High</td>
+<td><strong>Lowest</strong></td>
+<td>Slightly higher than Model 2</td>
+</tr>
+<tr class="even">
+<td><strong>Financial Stress significance</strong></td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><strong>Significant predictors</strong></td>
+<td>None</td>
+<td>None</td>
+<td>Academic Pressure (-), Work Pressure (-), Study Satisfaction (-), Gender (Male +)</td>
+<td>Academic Pressure (-), Work Pressure (-), Study Satisfaction (-), Gender (Male +)</td>
+</tr>
+<tr class="even">
+<td><strong>Model complexity</strong></td>
+<td>Low</td>
+<td>Low</td>
+<td>Moderate</td>
+<td>High</td>
+</tr>
+<tr class="odd">
+<td><strong>Interpretation ease</strong></td>
+<td>Easy</td>
+<td>Easy</td>
+<td>Moderate</td>
+<td>More complex (interaction terms)</td>
+</tr>
+<tr class="even">
+<td><strong>Recommended for final conclusions?</strong></td>
+<td>No</td>
+<td>No</td>
+<td><strong>Yes</strong> (best balance of complexity &amp; clarity)</td>
+<td>Optional (offers deeper insight on interactions)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="diagnostics" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Diagnostics</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_Thornton_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model1b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_Thornton_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_Thornton_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FinalProject_Thornton_files/figure-html/unnamed-chunk-10-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="residuals-vs.-fitted" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="residuals-vs.-fitted"><span class="header-section-number">8.1</span> 1. Residuals vs.&nbsp;Fitted</h2>
+<p>All four models produce a roughly random scatter of residuals around the horizontal zero line, with no visible curvature or “funnel” pattern. This indicates that the assumption of linearity between predictors and CGPA holds, and there is no serious heteroscedasticity either before (Models 1 &amp; 1b) or after adding controls and interaction terms (Models 2 &amp; 3). None of the models show systematic variance increases at higher or lower fitted values, so no transformation or weighted least squares is warranted.</p>
+</section>
+<section id="normal-qq-plot" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="normal-qq-plot"><span class="header-section-number">8.2</span> 2. Normal Q–Q Plot</h2>
+<p>In each Q–Q panel, the bulk of points from Models 1 through 3 lie closely along the 45° reference line, with only slight deviations at the extreme tails. Models 1 and 1b show marginally tighter adherence in the center and slightly more tail spread, but all four specifications meet the approximate normality requirement for residuals.</p>
+</section>
+<section id="scalelocation" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="scalelocation"><span class="header-section-number">8.3</span> 3. Scale–Location</h2>
+<p>The Scale-Location plots for every model display a nearly flat red smoothing line and a uniform spread of the square-rooted standardized residuals across fitted CGPA values. Even as you move from the simplest stress-only Models 1/1b to the full control and interaction Models 2/3, the assumption of constant variance remains satisfied. No pattern of increasing or decreasing spread emerges, so there is no indication that you need variance-stabilizing adjustments.</p>
+</section>
+<section id="cooks-distance-residuals-vs.-leverage" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="cooks-distance-residuals-vs.-leverage"><span class="header-section-number">8.4</span> 4. Cook’s Distance / Residuals vs.&nbsp;Leverage</h2>
+<p>Cook’s Distance panels flag only a small handful of observations near—but not beyond—the conventional cutoff in all four models. Models 2 and 3 show slightly more leverage points simply because they include more predictors, but none are extreme enough to unduly influence the regression coefficients. Thus, there is no strong evidence that any single case is driving your results in any specification.</p>
+</section>
+</section>
+<section id="references" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> References</h1>
+<ul>
+<li><a href="https://www.collegetuitioncompare.com/trends/university-of-massachusetts-amherst/" class="uri">https://www.collegetuitioncompare.com/trends/university-of-massachusetts-amherst/</a></li>
+</ul>
+<p>Usman, M., &amp; Banu, A. (2019). A Study on Impact of Financial Stress on Students’ Academics. <em>Journal of Business &amp; Economic Policy</em>, <em>6</em>(1). https://doi.org/10.30845/jbep.v6n1p7</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

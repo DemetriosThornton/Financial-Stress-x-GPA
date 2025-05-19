@@ -1,0 +1,216 @@
+---
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+    code-fold: false
+    number-sections: true
+    df-print: kable
+    fig-cap-location: bottom
+    highlight-style: github
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+```
+
+# Introduction
+
+Financial stress is becoming an increasingly worrying factor in 2025, especially for college student's. Some students may be supporting themselves through their education without assistance from family members or cosigners. For example, tuition costs at the Univeristy of Massachusetts Amherst have increased over \$10,000 the past 10 years. Monthly housing costs and living expenses have increased significantly over the past 10 years as well. How significant are these external factors on a students academic performance? What can Universities do to help not only lower the cost of living for on/off campus students but keep tuition costs reasonable? Previous research suggests that students under great financial strain can exhibit lower academic achievement. In a world full of scalping, tariffs, price gouging, and unattainable requirements for housing students are bound to see a decrease in overall performance due to these rising prices and low wages.
+
+# Research Question
+
+How is financial stress related to students’ academic performance (CGPA)??
+
+# Hypothesis
+
+Null Hypothesis (H0): Financial stress has no significant effect on students CGPA.
+
+Hypothesis (H1): Higher financial stress is associated with lower CGPA among college students.
+
+# Descriptive Statistics
+
+The data set was downloaded from Kaggle.com and be found at the following link: [Student Depression Dataset](https://www.kaggle.com/datasets/hopesb/student-depression-dataset).
+
+The data features 18 columns and over 27,000 rows. Important variables for my study include \$CGPA and \$Financial Stress. The \$CGPA column represents the cumulative grade point average for each of the 27,901 students. The range of these values is from 0 -10. The \$Financial Stress column represents students self perceived financial stress level on a scale of 1-5.
+
+```{r}
+df <- read.csv("student_depression_dataset.csv")
+head(df)
+glimpse(df)
+```
+
+# Visualization
+
+```{r}
+ggplot(df, aes(x = CGPA)) +
+  geom_histogram(binwidth = 0.25, fill = "steelblue") +
+  theme_minimal() +
+  labs(title = "Distribution of CGPA", x = "CGPA", y = "Count")
+```
+
+```{r}
+ggplot(df, aes(x = factor(`Financial.Stress`), y = CGPA)) +
+  geom_boxplot(fill = "lightgreen") +
+  theme_minimal() +
+  labs(title = "CGPA by Financial Stress Levels", x = "Financial Stress", y = "CGPA")
+```
+
+# Hypothesis Testing
+
+## Model 1
+
+The first model, which included only financial stress as a predictor of CGPA, revealed no statistically significant relationship. None of the financial stress categories were associated with changes in academic performance. Furthermore, the model explained almost none of the variance in CGPA, as indicated by the near-zero adjusted R-squared value.
+
+```{r}
+
+model1 <- lm(CGPA ~ `Financial.Stress`, data = df)
+
+summary(model1)
+
+```
+
+## Model 1b (Ordinal)
+
+A model was fitted for stress as an ordinal variable. The student responses were coded into 5 categories ranging from Not Stressed to Extremely Stressed. The model found essentially no statistically significant findings between the four intercept tests, except for a slightly marginally significant p value for the cubic intercept. Although there is a detectable S‐shaped wiggle in the means, the magnitude of these deviations is very small (all mean CGPA remain tightly clustered around 7.65–7.69). In practical terms, treating stress as an ordered factor with a cubic trend does not yield a substantively meaningful relationship with CGPA.
+
+```{r}
+stress_labels <- c(
+  "Not stressed",
+  "Slightly stressed",
+  "Moderately stressed",
+  "Strongly stressed",
+  "Extremely stressed")
+
+df$Financial.Stress.Num <- as.numeric(
+  ifelse(df$Financial.Stress == "?", NA, df$Financial.Stress))
+
+df$Financial.Stress.ord <- factor(
+  df$Financial.Stress.Num,
+  levels = 1:5,
+  labels = stress_labels,
+  ordered = TRUE)
+
+df$Financial.Stress.ord <- droplevels(df$Financial.Stress.ord)
+
+table(df$Financial.Stress.ord, useNA = "ifany")
+
+model1b <- lm(CGPA ~ Financial.Stress.ord, data = df)
+summary(model1b)
+```
+
+```{r}
+df_clean <- df %>%
+  mutate(Financial.Stress.Num = as.numeric(ifelse(Financial.Stress == "?", NA, Financial.Stress))) %>%
+  filter(!is.na(Financial.Stress.Num), !is.na(CGPA))
+
+mean_df <- df_clean %>%
+  group_by(Financial.Stress.Num) %>%
+  summarize(mean_CGPA = mean(CGPA), .groups = "drop")
+
+ggplot(mean_df, aes(x = Financial.Stress.Num, y = mean_CGPA)) +
+  geom_point(size = 3) +
+  stat_smooth(
+    method = "lm",
+    formula = y ~ poly(x, 3),
+    se = FALSE
+  ) +
+  scale_x_continuous(
+    breaks = 1:5,
+    labels = c(
+      "Not\nstressed",
+      "Slightly\nstressed",
+      "Moderately\nstressed",
+      "Strongly\nstressed",
+      "Extremely\nstressed"
+    )
+  ) +
+  labs(
+    x = "Financial Stress Level",
+    y = "Mean CGPA",
+    title = "Mean CGPA by Financial Stress Level with Cubic Trend"
+  ) +
+  theme_minimal()
+```
+
+## Model 2 (Controls)
+
+The second model incorporated additional control variables, including academic pressure, work pressure, study satisfaction, family history of mental illness, gender, and age. While the overall model was statistically significant (p \< 0.001), financial stress remained an insignificant predictor of CGPA. In contrast, academic pressure, work pressure, and study satisfaction were significant predictors: higher levels of academic and work pressure, as well as lower study satisfaction, were associated with lower CGPA. Gender (being male) was also a statistically significant but small positive predictor of CGPA.
+
+```{r}
+model2 <- lm(CGPA ~ `Financial.Stress` + `Academic.Pressure` + `Work.Pressure` + `Study.Satisfaction` +
+               `Family.History.of.Mental.Illness` + Gender + Age, data = df)
+
+summary(model2)
+```
+
+## Model 3 (Interaction and Controls)
+
+When we account for gender and factors like academic and work pressure and study satisfaction, financial stress hardly registers any effect on students’ GPA none of the stress related trends are significant, and together they explain almost no variation. Instead, being male is linked to a modest 0.10 point higher GPA, while higher academic and work pressures and greater study satisfaction all correspond to small but clear drops in GPA. There’s also no sign that stress impacts men and women differently. In short, financial stress on its own isn’t moving the needle on GPA once you consider these other pressures, and most of what drives GPA differences lies elsewhere.
+
+```{r}
+df$Gender <- factor(df$Gender)
+table(df$Gender)
+
+
+model3 <- lm(
+  CGPA ~ Financial.Stress.ord * Gender +
+    Academic.Pressure +
+    Work.Pressure +
+    Study.Satisfaction +
+    Family.History.of.Mental.Illness +
+    Age,
+  data = df
+)
+summary(model3)
+```
+
+# Model Comparisons
+
+Model 2 provided a better fit to the data than Model 1, 1b and 3 as indicated by a higher adjusted R-squared value and a much smaller AIC. However, despite the improved model fit, financial stress remained an insignificant predictor of CGPA. The inclusion of control variables highlighted that other factors such as academic pressure, work obligations, and study satisfaction have a stronger impact on students' academic performance than financial stress alone.
+
+| Criteria | Model 1 | Model 1b (Ordinal) | Model 2 (Controls) | Model 3 (Interaction + Controls) |
+|----|----|----|----|----|
+| **Predictors included** | Financial Stress (categorical) | Financial Stress (ordinal) | Financial Stress, Academic Pressure, Work Pressure, Study Satisfaction, Family History, Gender, Age | Financial Stress × Gender interaction, Academic Pressure, Work Pressure, Study Satisfaction, Family History, Age |
+| **Adjusted R²** | 0.00003 | 0.00006 | **0.0066** | 0.0066 |
+| **AIC (approx.)** | High | High | **Lowest** | Slightly higher than Model 2 |
+| **Financial Stress significance** | No | No | No | No |
+| **Significant predictors** | None | None | Academic Pressure (-), Work Pressure (-), Study Satisfaction (-), Gender (Male +) | Academic Pressure (-), Work Pressure (-), Study Satisfaction (-), Gender (Male +) |
+| **Model complexity** | Low | Low | Moderate | High |
+| **Interpretation ease** | Easy | Easy | Moderate | More complex (interaction terms) |
+| **Recommended for final conclusions?** | No | No | **Yes** (best balance of complexity & clarity) | Optional (offers deeper insight on interactions) |
+
+# Diagnostics
+
+```{r}
+par(mfrow = c(2,2))
+plot(model1)
+plot(model1b)
+plot(model2)
+plot(model3)
+```
+
+## 1. Residuals vs. Fitted
+
+All four models produce a roughly random scatter of residuals around the horizontal zero line, with no visible curvature or “funnel” pattern. This indicates that the assumption of linearity between predictors and CGPA holds, and there is no serious heteroscedasticity either before (Models 1 & 1b) or after adding controls and interaction terms (Models 2 & 3). None of the models show systematic variance increases at higher or lower fitted values, so no transformation or weighted least squares is warranted.
+
+## 2. Normal Q–Q Plot
+
+In each Q–Q panel, the bulk of points from Models 1 through 3 lie closely along the 45° reference line, with only slight deviations at the extreme tails. Models 1 and 1b show marginally tighter adherence in the center and slightly more tail spread, but all four specifications meet the approximate normality requirement for residuals.
+
+## 3. Scale–Location
+
+The Scale-Location plots for every model display a nearly flat red smoothing line and a uniform spread of the square-rooted standardized residuals across fitted CGPA values. Even as you move from the simplest stress-only Models 1/1b to the full control and interaction Models 2/3, the assumption of constant variance remains satisfied. No pattern of increasing or decreasing spread emerges, so there is no indication that you need variance-stabilizing adjustments.
+
+## 4. Cook’s Distance / Residuals vs. Leverage
+
+Cook’s Distance panels flag only a small handful of observations near—but not beyond—the conventional cutoff in all four models. Models 2 and 3 show slightly more leverage points simply because they include more predictors, but none are extreme enough to unduly influence the regression coefficients. Thus, there is no strong evidence that any single case is driving your results in any specification.
+
+# References
+
+-   <https://www.collegetuitioncompare.com/trends/university-of-massachusetts-amherst/>
+
+Usman, M., & Banu, A. (2019). A Study on Impact of Financial Stress on Students’ Academics. *Journal of Business & Economic Policy*, *6*(1). https://doi.org/10.30845/jbep.v6n1p7
